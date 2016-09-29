@@ -11,9 +11,9 @@ user_name = raw_input('Please Enter Username: ')
 user_password = getpass.getpass('Please Enter Password: ')
 
 """ We call all functions(search,provision,avab etc.) with using our book_instance object """
-book_instance = book.Book(search_params, book_info)
+book_instance = book.Book()
 book_instance.login(user_name, user_password)
-print book_instance.search(search_params)
+book_instance.search(search_params)
 book_instance.availability(product_code)
 book_instance.provision(product_code)
 book_instance.cancel(book_code)

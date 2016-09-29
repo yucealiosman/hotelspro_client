@@ -2,11 +2,9 @@ import requests
 
 
 class Book:
-    def __init__(self, search_params, book_info):
+    def __init__(self):
         self.user_name = ''
         self.user_password = ''
-        self.search_params = search_params
-        self.book_info = book_info
         self.BASE_URL = 'http://localhost:8000/api/v2'
         self.SEARCH_URL = self.BASE_URL + '/search/?'
         self.AVAILABILITY = self.BASE_URL + '/availability/'
@@ -55,9 +53,9 @@ class Book:
         if request.status_code == 200:
             return request.json()
 
-    def book(self, provision_code):
+    def book(self, provision_code, book_info):
         url = '{}{}'.format(self.BOOK_URL, provision_code)
-        request = self.create_post_request(url, self.book_info)
+        request = self.create_post_request(url, book_info)
         if request.status_code == 200:
             return request.json()
 
