@@ -1,5 +1,5 @@
-import requests
-
+import  requests
+import json
 
 class Book:
     def __init__(self):
@@ -22,16 +22,10 @@ class Book:
             exit()
 
     def create_get_request(self, url):
-        try:
-            return requests.get(url, auth=(self.user_name, self.user_password))
-        except:
-            print 'Error occurred while sending get request'
+        return requests.get(url, auth=(self.user_name, self.user_password))
 
     def create_post_request(self, url, pay_load=None):
-        try:
-            return requests.post(url, auth=(self.user_name, self.user_password), data=pay_load)
-        except:
-            print 'Error occurred while sending get request'
+        return requests.post(url, auth=(self.user_name, self.user_password), data=pay_load)
 
     def search(self, params):
         for item in params:

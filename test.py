@@ -1,5 +1,5 @@
 from unittest import TestCase, main
-from coral_client.book import *
+from coral_client.book import Book
 
 class Test(TestCase):
     hotel_code = "HOTEL_CODE"
