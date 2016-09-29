@@ -9,7 +9,7 @@ setup(
     author='Ali Osman Yuce',
     author_email='aliosmanyuce@gmail.com',
     description='Hotelspro.com api client',
-    install_requires=['requests', 'getpass'],
+    install_requires=['requests'],
     classifiers=(
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',

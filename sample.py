@@ -1,4 +1,4 @@
-import book
+from coral_client import book
 import getpass
 """ We create sample variables to invoke functions   """
 search_params = {'checkin': '2016-09-30', 'checkout': '2016-10-03',
@@ -13,7 +13,7 @@ user_password = getpass.getpass('Please Enter Password: ')
 """ We call all functions(search,provision,avab etc.) with using our book_instance object """
 book_instance = book.Book(search_params, book_info)
 book_instance.login(user_name, user_password)
-book_instance.search(search_params)
+print book_instance.search(search_params)
 book_instance.availability(product_code)
 book_instance.provision(product_code)
 book_instance.cancel(book_code)

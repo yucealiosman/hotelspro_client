@@ -12,15 +12,15 @@
 
 # Installation #
 
-    $ (sudo) pip install coral_client
+    $ python setup.py install
 
 # Usage #
 
-    from coral_client import *
+    from coral_client import book
 
 ## Example : search() ##
 
-    from book import *
+    
 
     search_params = {'checkin': '2016-09-30', 'checkout': '2016-10-03',
                  'pax': '1', 'destination_code': '19122', 'client_nationality': 'tr', 'currency': 'USD'}
