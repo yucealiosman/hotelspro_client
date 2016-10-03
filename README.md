@@ -4,7 +4,7 @@
 
 # Booker #
 
-    A python client library for HotelsPro
+    A python client library for CoralPro
 
     Version 1.0.0
 
@@ -25,7 +25,7 @@
     search_params = {'checkin': '2016-09-30', 'checkout': '2016-10-03',
                  'pax': '1', 'destination_code': '19122', 'client_nationality': 'tr', 'currency': 'USD'}
     book_info = {'name': '1,Ali,Yuce,adult'}             
-    book_instance = book.Book(search_params, book_info)
+    book_instance = book.Book()
     book_instance.login(user_name, user_password)
     book_instance.search(search_params)
     
@@ -62,7 +62,7 @@
         ],
         u'provider': u'hbeds',
         u'names': [
-            u'Burak Caparlar'
+            u'TEST TEST'
         ]
         }
     ],

@@ -2,60 +2,57 @@ from unittest import TestCase, main
 from coral_client.book import Book
 
 class Test(TestCase):
-    hotel_code = "HOTEL_CODE"
-    prod_code = "PRODUCTION_CODE"
-    book_code = "BOOK_CODE"
-    book_info = {'name': '1,ali,osman,adult'}
+    product_code = "EEG0IV4hIAAAAAAAAAAAAAAAAAAAAAAAAAHAd2Xs9NqCR76uaz0dBhCaHf_9gAAAAAAAAAAAAAK0gAAAAAL8IOBOgJM0tYl0amtWABIAgAAAAAAAAAAABA"
+    book_code = "BVGZGTUAMEBH"
+    search_params = {'checkin': '2016-10-30', 'checkout': '2016-11-03',
+                     'pax': '1', 'hotel_code': '1041b4', 'client_nationality': 'tr', 'currency': 'USD'}
+
+    book_info = {'name': '1,test,test,adult'}
+    book = Book()
+    book.login("yucealiosman", "5")
+    search_resp = book.search(search_params)
 
     def __init__(self, *args, **kwargs):
 
-        self.search_response = self.book.search({"pax": "1",
-                                                "checkin": "2016-09-30",
-                                                "checkout": "2016-10-03",
-                                                "currency": "USD",
-                                                "hotel_code": self.hotel_code,
-                                                "client_nationality": "tr"})
-        self.book = Book()
-        self.book.login("USERNAME", "PASSWORD")
+
+
         super(Test, self).__init__(*args, **kwargs)
 
     def test_search(self):
-        # self.assertEqual(200, self._search_resp.status_code)
-        # resp = self._search_resp.json()
-        self.assertGreaterEqual(self.search_response['count'], 1)
-        self.assertIn('code', self.search_response['results'][0]['products'][0])
+        self.assertGreaterEqual(self.search_resp['count'], 1)
+        self.assertIn('code', self.search_resp['results'][0]['products'][0])
 
-    def availability_test(self):
-        availability_response = self.book.availability(self.prod_code)
-        self.assertIsInstance(availability_response, dict)
-        self.assertIn('meal_type', availability_response)
-        self.assertIn('price', availability_response)
-        self.assertIn('cost', availability_response)
-        self.assertIsInstance(availability_response['rooms'], list)
 
-    def provision_test(self):
-        provision_response = self.book.provision(self.prod_code)
-        self.assertIn('code', provision_response)
+    def test_availability(self):
+        resp = self.book.availability(self.product_code)
+        self.assertIsInstance(resp, dict)
+
+        self.assertIn('price', resp)
+        self.assertIn('cost', resp)
+        self.assertIsInstance(resp['policies'], list)
+
+    def test_provision(self):
+        resp = self.book.provision(self.product_code)
+        self.assertIn('code', resp)
 
     def test_book_and_cancel(self):
-        prov_code = self.book.provision(self.prod_code)['code']
-        cancel_response = self.book.book(prov_code, self.book_info)
-        self.assertIn('code', cancel_response)
-        self.assertEqual('succeeded', cancel_response['status'])
-        cancel_response = self.book.cancel(cancel_response['code'])
-        self.assertIsInstance(cancel_response, dict)
-        self.assertIn('code', cancel_response)
+        prov_code = self.book.provision(self.product_code)['code']
+        resp = self.book.book(prov_code, self.book_info)
+       # self.assertIn('code', resp)
+        self.assertEqual('succeeded', resp['status'])
+
+        resp = self.book.cancel(resp['code'])
+        self.assertIsInstance(resp, dict)
+        self.assertIn('code', resp)
 
     def test_bookings(self):
-        bookings_response = self.book.bookings()
-        # self.assertEqual(200, resp.status_code)
-        # resp = resp.json()
-        self.assertIsInstance(bookings_response, list)
+        resp = self.book.bookings()
+        print resp
+        self.assertIsInstance(resp, list)
 
-        bookings_response = self.book.bookings(self.book_code)
-        # self.assertEqual(200, resp.status_code)
-        # resp = resp.json()
-        self.assertIsInstance(bookings_response, dict)
+        resp = self.book.bookings(self.book_code)
+        #self.assertIsInstance(resp, dict)
+
 
 if __name__ == '__main__':
     main()
