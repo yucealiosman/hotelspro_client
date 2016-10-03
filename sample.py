@@ -13,6 +13,6 @@ user_password = getpass.getpass('Please Enter Password: ')
 book_instance = book.Book()
 book_instance.login(user_name, user_password)
 book_instance.search(search_params)
-book_instance.availability(product_code)
+print book_instance.availability(product_code)
 
 book_instance.bookings()
