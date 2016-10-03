@@ -22,7 +22,7 @@
 
     
 
-    search_params = {'checkin': '2016-09-30', 'checkout': '2016-10-03',
+    search_params = {'checkin': '2016-10-30', 'checkout': '2016-11-03',
                  'pax': '1', 'destination_code': '19122', 'client_nationality': 'tr', 'currency': 'USD'}
     book_info = {'name': '1,Ali,Yuce,adult'}             
     book_instance = book.Book()
