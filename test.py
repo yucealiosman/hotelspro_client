@@ -40,7 +40,6 @@ class Test(TestCase):
 
     def test_bookings(self):
         resp = self.book.bookings()
-        print resp
         self.assertIsInstance(resp, list)
 
 if __name__ == '__main__':
