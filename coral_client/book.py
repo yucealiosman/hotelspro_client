@@ -1,5 +1,4 @@
 import  requests
-import json
 
 class Book:
     def __init__(self):
@@ -34,33 +33,45 @@ class Book:
 
         if request.status_code == 200:
             return request.json()
+        else:
+            print "Search Error Code:", str(request.status_code)
 
     def availability(self, product_code):
         url = '{}{}'.format(self.AVAILABILITY, product_code)
         request = self.create_get_request(url)
         if request.status_code == 200:
             return request.json()
+        else:
+            print "Availability Error Code:", str(request.status_code)
 
     def provision(self, product_code):
         url = '{}{}'.format(self.PROVISION_URL, product_code)
         request = self.create_post_request(url)
         if request.status_code == 200:
             return request.json()
+        else:
+            print "Provision Error Code:", str(request.status_code)
 
     def book(self, provision_code, book_info):
         url = '{}{}'.format(self.BOOK_URL, provision_code)
         request = self.create_post_request(url, book_info)
         if request.status_code == 200:
             return request.json()
+        else:
+            print "Book Error Code:", str(request.status_code)
 
     def cancel(self, book_code):
         url = self.CANCEL_URL + str(book_code)
         request = self.create_post_request(url)
         if request.status_code == 200:
             return request.json()
+        else:
+            print "Cancel Error Code:", str(request.status_code)
 
     def bookings(self, book_code=''):
         url = self.BOOKINGS_URL + book_code
         request = self.create_get_request(url)
         if request.status_code == 200:
             return request.json()
+        else:
+            print "Bookings Error Code:", str(request.status_code)

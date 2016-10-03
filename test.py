@@ -13,20 +13,15 @@ class Test(TestCase):
     search_resp = book.search(search_params)
 
     def __init__(self, *args, **kwargs):
-
-
-
         super(Test, self).__init__(*args, **kwargs)
 
     def test_search(self):
         self.assertGreaterEqual(self.search_resp['count'], 1)
         self.assertIn('code', self.search_resp['results'][0]['products'][0])
 
-
     def test_availability(self):
         resp = self.book.availability(self.product_code)
         self.assertIsInstance(resp, dict)
-
         self.assertIn('price', resp)
         self.assertIn('cost', resp)
         self.assertIsInstance(resp['policies'], list)
@@ -38,9 +33,7 @@ class Test(TestCase):
     def test_book_and_cancel(self):
         prov_code = self.book.provision(self.product_code)['code']
         resp = self.book.book(prov_code, self.book_info)
-       # self.assertIn('code', resp)
         self.assertEqual('succeeded', resp['status'])
-
         resp = self.book.cancel(resp['code'])
         self.assertIsInstance(resp, dict)
         self.assertIn('code', resp)
@@ -49,10 +42,6 @@ class Test(TestCase):
         resp = self.book.bookings()
         print resp
         self.assertIsInstance(resp, list)
-
-        resp = self.book.bookings(self.book_code)
-        #self.assertIsInstance(resp, dict)
-
 
 if __name__ == '__main__':
     main()
