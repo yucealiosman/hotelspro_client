@@ -18,18 +18,33 @@
 
     from coral_client import book
 
-## Example : search() ##
+## Example : search(), availability(), provision(), book(), cancel() ##
 
     
 
     search_params = {'checkin': '2016-10-30', 'checkout': '2016-11-03',
                  'pax': '1', 'destination_code': '19122', 'client_nationality': 'tr', 'currency': 'USD'}
-    book_info = {'name': '1,Ali,Yuce,adult'}             
+    book_info = {'name': '1,Test,Test,adult'}
+    product_code = 'EEG0IV4hIAAAAAAAAAAAAAAAAAAAAAAAAAHAd2Xs9NqCR76' \
+               'uaz0dBhCaHf_9gAAAAAAAAAAAAAK0gAAAAAL8IOBOgJM0tYl0a' \
+               'mtWABIAgAAAAAAAAAAABA'
+    provison_code = '3JFFDJFAPF'
+    book_code = 'BH3HDC3FG'
+
+book_code = 'BCHNPST36ZC3'
     book_instance = book.Book()
     book_instance.login(user_name, user_password)
     book_instance.search(search_params)
+    book_instance.provision(availability)
+    book_instance.provision(product_code)
+    book_instance.book(provison_code, book_info)
+    book_instance.cancel(book_code)
+    book_instance.bookings()  """Return all customer bookings """
+    book_instance.bookings(book_code) """ Return book_information for given book_code ""
+
     
-### Response ###
+### Response ###"
+    """Search response ""
     {
     u'client_nationality': u'tr',
     u'status': u'succeeded',
