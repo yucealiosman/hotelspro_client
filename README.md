@@ -31,7 +31,7 @@
     provison_code = '3JFFDJFAPF'
     book_code = 'BH3HDC3FG'
 
-book_code = 'BCHNPST36ZC3'
+    book_code = 'BCHNPST36ZC3'
     book_instance = book.Book()
     book_instance.login(user_name, user_password)
     book_instance.search(search_params)

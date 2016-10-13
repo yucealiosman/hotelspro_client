@@ -20,7 +20,7 @@ user_password = getpass.getpass('Please Enter Password: ')
 our book_instance object """
 book_instance = book.Book()
 book_instance.login(user_name, user_password)
-a = book_instance.search(wrong_params)
+a = book_instance.search(search_params)
 prod_code = a[0]['results'][0]['products'][0]['code']
 b = book_instance.provision(prod_code)[0]['code']
-c = book_instance.book('wrong_param')
+print b
