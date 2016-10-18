@@ -1,0 +1,12 @@
+Metadata-Version: 1.1
+Name: coral-client
+Version: 1.1.0
+Summary: Hotelspro.com api client
+Home-page: https://bitbucket.org/yuceali/coral_client
+Author: Ali Osman Yuce
+Author-email: aliosmanyuce@gmail.com
+License: GPL
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7

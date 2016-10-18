@@ -1,0 +1,8 @@
+setup.py
+coral_client/__init__.py
+coral_client/book.py
+coral_client.egg-info/PKG-INFO
+coral_client.egg-info/SOURCES.txt
+coral_client.egg-info/dependency_links.txt
+coral_client.egg-info/requires.txt
+coral_client.egg-info/top_level.txt
